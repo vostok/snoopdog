@@ -1,12 +1,5 @@
 full-build:
-  deps:
-    - core
-    - logging
-    - core-infra
 
   build:
-    target: Kontur.SnoopDog.sln
+    target: Vostok.SnoopDog.sln
     configuration: Release
-
-  install:
-    - Kontur.SnoopDog/bin/Release/netcoreapp3.0/Kontur.SnoopDog.exe
