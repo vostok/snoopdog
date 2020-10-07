@@ -14,9 +14,6 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageOutputPath>$(SolutionDir)\nupkg</PackageOutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Client|AnyCPU' ">
-    <OutputPath>bin\Client\</OutputPath>
-  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vostok.SnoopDog.Core\Vostok.SnoopDog.Core.csproj" />
   </ItemGroup>
