@@ -12,7 +12,6 @@
     <IsPackable>true</IsPackable>
     <PackAsTool>true</PackAsTool>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageOutputPath>$(SolutionDir)\nupkg</PackageOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vostok.SnoopDog.Core\Vostok.SnoopDog.Core.csproj" />
