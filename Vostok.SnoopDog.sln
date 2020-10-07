@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vostok.SnoopDog.Core", "Vostok.SnoopDog.Core\Vostok.SnoopDog.Core.csproj", "{045A7625-7C3C-45A0-9802-7EB544F027E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vostok.SnoopDog", "Vostok.SnoopDog\Vostok.SnoopDog.csproj", "{FE67E409-FB1D-4EEF-8993-DE33D79AAC36}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snoopdog", "snoopdog\snoopdog.csproj", "{FE67E409-FB1D-4EEF-8993-DE33D79AAC36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
