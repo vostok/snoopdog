@@ -23,14 +23,10 @@
     <ProjectReference Include="..\Vostok.SnoopDog.Core\Vostok.SnoopDog.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="CommandLineParser" Version="2.2.1">
-        <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="CommandLineParser" Version="2.8.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="System.Collections" Version="4.0.11-rc2-24027" />
-    <PackageReference Include="System.Console" Version="4.0.0-rc2-24027">
-        <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="System.Console" Version="4.0.0-rc2-24027" />
     <PackageReference Include="System.Diagnostics.Debug" Version="4.0.11-rc2-24027" />
     <PackageReference Include="System.Globalization" Version="4.0.11-rc2-24027" />
     <PackageReference Include="System.IO" Version="4.1.0-rc2-24027" />
@@ -38,9 +34,7 @@
     <PackageReference Include="System.Linq.Expressions" Version="4.0.11-rc2-24027" />
     <PackageReference Include="System.Reflection" Version="4.1.0-rc2-24027" />
     <PackageReference Include="System.Reflection.Extensions" Version="4.0.1-rc2-24027" />
-    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.1.0-rc2-24027">
-        <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.1.0-rc2-24027" />
     <PackageReference Include="System.Resources.ResourceManager" Version="4.0.1-rc2-24027" />
     <PackageReference Include="System.Runtime" Version="4.1.0-rc2-24027" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.4.0" />
