@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <OutputType>Exe</OutputType>
@@ -17,8 +17,8 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IsPackable>true</IsPackable>
     <PackAsTool>true</PackAsTool>
+    <ToolCommandName>snoopdog</ToolCommandName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <RootNamespace>Vostok.SnoopDog</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vostok.SnoopDog.Core\Vostok.SnoopDog.Core.csproj" />
