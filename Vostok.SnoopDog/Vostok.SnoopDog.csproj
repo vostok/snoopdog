@@ -3,7 +3,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <LangVersion>Latest</LangVersion>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Vostok team</Authors>
     <Title>Vostok.SnoopDog</Title>
     <Description>.NET Core tool for analyzing live processes and dumps.</Description>
