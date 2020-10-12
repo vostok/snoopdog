@@ -162,7 +162,25 @@ namespace Vostok.SnoopDog
         public int ProcessId
         {
             get => 0;
-            set => GetDataTarget = () => DataTarget.AttachToProcess(value, 10000, AttachFlag.Passive);
+            set
+            {
+                static Func<DataTarget> HandleExceptions(Func<DataTarget> getDataTarget)
+                {
+                    return () =>
+                    {
+                        try
+                        {
+                            return getDataTarget();
+                        }
+                        catch
+                        {
+                            throw new ArgumentException("Unable to attach to process. Note that you can't attach to 32-bit from 64-bit and vice versa.");
+                        }
+                    };
+                }
+
+                GetDataTarget = HandleExceptions(() => DataTarget.AttachToProcess(value, 10000, AttachFlag.Passive));
+            }
         }
     }
 
@@ -189,7 +207,7 @@ namespace Vostok.SnoopDog
                         }
                     };
                 }
-                
+
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                     GetDataTarget = HandleExceptions(() => DataTarget.LoadCrashDump(value));
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
