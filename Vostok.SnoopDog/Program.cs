@@ -20,7 +20,10 @@ namespace Vostok.SnoopDog
                .MapResult(
                     (ProcessArguments a) => Run(a),
                     (DumpArguments a) => Run(a),
-                    errs => 1);
+                    errs => errs.Any(x => 
+                        !(x is HelpRequestedError || 
+                          x is HelpVerbRequestedError || 
+                          x is VersionRequestedError)) ? 1 : 0);
         }
 
         private static int Run(Arguments options)
