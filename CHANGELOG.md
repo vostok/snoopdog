@@ -1,3 +1,7 @@
+## 1.0.4 (26.10.2020)
+
+- Fixed bug when 'version' or 'help' returns non-zero exit code.
+
 ## 1.0.3 (14.10.2020)
 
 - Fixed TypeByHeapGensStatBuilder bug, when underlying Type.Name equals null.
