@@ -21,21 +21,7 @@ namespace Vostok.SnoopDog.Core.Utils
                 .Select(frame => frame.ToString().EscapeNull())
                 .ToArray();
 
-        // ReSharper disable once InconsistentNaming
-        public static int GetGenOrLOH(this ClrRuntime runtime, ulong address)
-        {
-            var segment = runtime.Heap.GetSegmentByAddress(address);
-            var g = segment.GetGeneration(address);
-
-            return g switch
-            {
-                Generation.Generation0 => 0,
-                Generation.Generation1 => 1,
-                Generation.Generation2 => 2,
-                Generation.Pinned => 3,
-                Generation.Large => 3,
-                _ => -1
-            };
-        }
+        public static Generation? GetGeneration(this ClrRuntime runtime, ulong address) 
+            => runtime.Heap.GetSegmentByAddress(address)?.GetGeneration(address);
     }
 }

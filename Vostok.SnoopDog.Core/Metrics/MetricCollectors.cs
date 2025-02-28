@@ -11,7 +11,6 @@ namespace Vostok.SnoopDog.Core.Metrics
         public static Metric CollectThreadCountMetric(ClrRuntime runtime) =>
             new Metric("Threads count", runtime.Threads.Length);
 
-
         public static IEnumerable<Metric> CollectHeapGenerationMetrics(ClrRuntime runtime, Report report)
         {
             if (report.Stats.Any(s => s is TypesByGensStat))
@@ -19,22 +18,26 @@ namespace Vostok.SnoopDog.Core.Metrics
                     .Select(s => s as TypesByGensStat)
                     .Where(s => s != null)
                     .OrderBy(s => s.HeapGen)
-                    .Select(
-                        s => new Metric(
-                            s.HeapGen != 3 ? $"Heap generation {s.HeapGen} objects count" : "Large Objects Heap objects count",
-                            s.TypesStats.Sum(kv => kv.Value.Count)));
-            
+                    .SelectMany(
+                        s =>
+                        {
+                            var countMetric = new Metric($"Heap generation '{s.HeapGen}' objects count", s.TypesStats.Sum(kv => kv.Value.Count));
+                            var sizeMetric = new Metric($"Heap generation '{s.HeapGen}' objects total size", s.TypesStats.Sum(kv => kv.Value.TotalSize.Bytes));
+                            return new[] {countMetric, sizeMetric};
+                        });
             
             return runtime.Heap
                 .EnumerateObjects()
-                .Select(o => runtime.GetGenOrLOH(o.Address))
-                .GroupBy(g => g)
+                .Where(o => o.Type != null)
+                .Select(o => (Size: o.Size, Gen: runtime.GetGeneration(o.Address)))
+                .GroupBy(g => g.Gen)
                 .OrderBy(g => g.Key)
-                .Select(g => new Metric(
-                    g.Key != 3 ? 
-                        $"Heap generation {g.Key} objects count" : 
-                        "Large Objects Heap objects count", 
-                    g.Count()));
+                .SelectMany(g =>
+                {
+                    var countMetric = new Metric($"Heap generation '{g.Key}' objects count", g.Count());
+                    var sizeMetric = new Metric($"Heap generation '{g.Key}' objects total size", g.Sum(obj => (long) obj.Size));
+                    return new[] {countMetric, sizeMetric};
+                });
         }
     }
 }

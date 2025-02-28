@@ -9,8 +9,8 @@ namespace Vostok.SnoopDog.Core.Stats
 
 
         public StackTraceStat(Dictionary<string[], int[]> stackTraceStats) : 
-            base("Uniq stack traces", 
-                "For each stack trace list of managed thread ids is provided.")
+            base("Unique stack traces", 
+                "For each stack trace a list of managed thread IDs is provided.")
         {
             StackTraceInfos = stackTraceStats
                 .Select(kv => new StackTraceInfo()
