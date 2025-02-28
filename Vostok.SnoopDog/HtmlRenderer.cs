@@ -238,16 +238,7 @@ namespace Vostok.SnoopDog
                 Write(issue.Title);
             Write(issue.Message);
 
-            if (issue is DeadLockIssue dlk)
-            {
-                using (Tag("h4"))
-                    Write("Deadlock cycle");
-                RenderTable(
-                    dlk.Cycle.Zip(dlk.StackTraces, (c, s) => (c, s)),
-                    ("Thread id", e => WriteNumericTableValue(e.Item1.Item1.ManagedThreadId.ToString())),
-                    ("Stack trace", e => RenderStackTrace(e.Item2)));
-            }
-            else if (issue is UnhandledExceptionIssue ex)
+            if (issue is UnhandledExceptionIssue ex)
             {
                 using (Tag("h4"))
                     Write("Exception type");

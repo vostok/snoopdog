@@ -9,7 +9,7 @@ namespace Vostok.SnoopDog.Core.Metrics
     public static class MetricCollectors
     {
         public static Metric CollectThreadCountMetric(ClrRuntime runtime) =>
-            new Metric("Threads count", runtime.Threads.Count);
+            new Metric("Threads count", runtime.Threads.Length);
 
 
         public static IEnumerable<Metric> CollectHeapGenerationMetrics(ClrRuntime runtime, Report report)
@@ -24,9 +24,10 @@ namespace Vostok.SnoopDog.Core.Metrics
                             s.HeapGen != 3 ? $"Heap generation {s.HeapGen} objects count" : "Large Objects Heap objects count",
                             s.TypesStats.Sum(kv => kv.Value.Count)));
             
+            
             return runtime.Heap
-                .EnumerateObjectAddresses()
-                .Select(runtime.GetGenOrLOH)
+                .EnumerateObjects()
+                .Select(o => runtime.GetGenOrLOH(o.Address))
                 .GroupBy(g => g)
                 .OrderBy(g => g.Key)
                 .Select(g => new Metric(

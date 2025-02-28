@@ -38,7 +38,7 @@
     <PackageReference Include="System.Reflection.TypeExtensions" Version="4.1.0-rc2-24027" />
     <PackageReference Include="System.Resources.ResourceManager" Version="4.0.1-rc2-24027" />
     <PackageReference Include="System.Runtime" Version="4.1.0-rc2-24027" />
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.4.0" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.0" />
     <PackageReference Include="System.Runtime.Extensions" Version="4.1.0-rc2-24027" />
   </ItemGroup>
 </Project>

@@ -6,7 +6,7 @@ namespace Vostok.SnoopDog.Core.Stats
     public class BoxedStructStatBuilder : HeapStatBuilder<string>
     {
         protected override string Descriminator(ClrObject clrObject, ClrRuntime runtime, ClrType type)
-            => type.IsValueClass ? type?.Name : null;
+            => type.IsValueType ? type?.Name : null;
 
         public override IEnumerable<Stat> Build()
         {

@@ -16,7 +16,7 @@ namespace Vostok.SnoopDog.Core.Issues
             Message = $"Unhandled exception of type {ExceptionType} in thread {clrThread.ManagedThreadId}";
             ExceptionMessage = exception.Message.EscapeNull();
             StackTrace = exception.StackTrace
-                .Select(frame => frame.DisplayString.EscapeNull())
+                .Select(frame => frame.ToString().EscapeNull())
                 .ToArray();
         }
 

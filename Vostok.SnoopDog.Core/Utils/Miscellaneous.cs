@@ -17,8 +17,8 @@ namespace Vostok.SnoopDog.Core.Utils
         }
         
         public static string[] GetStackTraceRepr(this ClrThread thread) =>
-            thread.StackTrace
-                .Select(frame => frame.DisplayString.EscapeNull())
+            thread.EnumerateStackTrace()
+                .Select(frame => frame.ToString().EscapeNull())
                 .ToArray();
 
         // ReSharper disable once InconsistentNaming
@@ -26,9 +26,16 @@ namespace Vostok.SnoopDog.Core.Utils
         {
             var segment = runtime.Heap.GetSegmentByAddress(address);
             var g = segment.GetGeneration(address);
-            if (g == 2 && segment.IsLarge)
-                g = 3;
-            return g;
+
+            return g switch
+            {
+                Generation.Generation0 => 0,
+                Generation.Generation1 => 1,
+                Generation.Generation2 => 2,
+                Generation.Pinned => 3,
+                Generation.Large => 3,
+                _ => -1
+            };
         }
     }
 }
