@@ -8,8 +8,22 @@ namespace Vostok.SnoopDog.Core.Metrics
 {
     public static class MetricCollectors
     {
-        public static Metric CollectThreadCountMetric(ClrRuntime runtime) =>
-            new Metric("Threads count", runtime.Threads.Length);
+        public static Metric CollectThreadCountMetric(ClrRuntime runtime) 
+            => new("Threads count", runtime.Threads.Length);
+
+        public static IEnumerable<Metric> CollectThreadPoolMetrics(ClrRuntime runtime, Report report)
+        {
+            var threadPool = runtime.ThreadPool;
+            if (threadPool == null)
+                yield break;
+            
+            yield return new Metric("Thread pool min workers", threadPool.MinThreads);
+            yield return new Metric("Thread pool max workers", threadPool.MaxThreads);
+            yield return new Metric("Thread pool active workers", threadPool.ActiveWorkerThreads);
+            yield return new Metric("Thread pool idle workers", threadPool.IdleWorkerThreads);
+            yield return new Metric("Thread pool retired workers", threadPool.RetiredWorkerThreads);
+            yield return new Metric("Thread pool CPU utilization (0-100)", threadPool.CpuUtilization);
+        }
 
         public static IEnumerable<Metric> CollectHeapGenerationMetrics(ClrRuntime runtime, Report report)
         {

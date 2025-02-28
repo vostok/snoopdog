@@ -79,6 +79,17 @@ namespace Vostok.SnoopDog
                     Reporter.RegisterMetrics(MetricCollectors.CollectThreadCountMetric);
             }
         }
+        
+        [Option("tp", Default = false, HelpText = "Inspect thread pool")]
+        public bool ThreadPool
+        {
+            get => false;
+            set
+            {
+                if (value)
+                    Reporter.RegisterMultiMetric(MetricCollectors.CollectThreadPoolMetrics);
+            }
+        }
 
         [Option("hg", Default = false, HelpText = "Generations counts and sizes")]
         public bool HeapGenerations
