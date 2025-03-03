@@ -21,7 +21,6 @@ namespace Vostok.SnoopDog.Core.Metrics
             yield return new Metric("Thread pool active workers", threadPool.ActiveWorkerThreads);
             yield return new Metric("Thread pool idle workers", threadPool.IdleWorkerThreads);
             yield return new Metric("Thread pool retired workers", threadPool.RetiredWorkerThreads);
-            yield return new Metric("Thread pool CPU utilization (0-100)", threadPool.CpuUtilization);
         }
 
         public static IEnumerable<Metric> CollectHeapGenerationMetrics(ClrRuntime runtime, Report report)
