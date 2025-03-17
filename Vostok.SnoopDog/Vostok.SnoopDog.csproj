@@ -2,7 +2,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <LangVersion>Latest</LangVersion>
-    <Version>1.0.5</Version>
+    <Version>1.0.6</Version>
     <Authors>Vostok team</Authors>
     <Title>Vostok.SnoopDog</Title>
     <Description>.NET Core tool for analyzing live processes and dumps.</Description>
