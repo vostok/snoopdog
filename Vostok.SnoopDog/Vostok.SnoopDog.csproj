@@ -1,6 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <LangVersion>Latest</LangVersion>
     <Version>1.0.5</Version>
@@ -19,6 +18,7 @@
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>snoopdog</ToolCommandName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFrameworks>net6.0;net8.0;net9.0</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vostok.SnoopDog.Core\Vostok.SnoopDog.Core.csproj" />
