@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.Diagnostics.Runtime;
 using Vostok.SnoopDog.Core.Stats;
 
 namespace Vostok.SnoopDog.Core.Stats
@@ -17,9 +18,9 @@ namespace Vostok.SnoopDog.Core.Stats
 
     internal class TypesByGensStat : TypesStat
     {
-        public int HeapGen { get; }
+        public Generation HeapGen { get; }
         
-        public TypesByGensStat(string title, string description, IDictionary<string, TypeStat> typesStats, int heapGen)
+        public TypesByGensStat(string title, string description, IDictionary<string, TypeStat> typesStats, Generation heapGen)
             : base(title, description, typesStats)
         {
             HeapGen = heapGen;

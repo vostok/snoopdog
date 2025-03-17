@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <LangVersion>Latest</LangVersion>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <Authors>Vostok team</Authors>
     <Title>Vostok.SnoopDog</Title>
     <Description>.NET Core tool for analyzing live processes and dumps.</Description>
@@ -24,21 +24,7 @@
     <ProjectReference Include="..\Vostok.SnoopDog.Core\Vostok.SnoopDog.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="CommandLineParser" Version="2.8.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="System.Collections" Version="4.0.11-rc2-24027" />
-    <PackageReference Include="System.Console" Version="4.0.0-rc2-24027" />
-    <PackageReference Include="System.Diagnostics.Debug" Version="4.0.11-rc2-24027" />
-    <PackageReference Include="System.Globalization" Version="4.0.11-rc2-24027" />
-    <PackageReference Include="System.IO" Version="4.1.0-rc2-24027" />
-    <PackageReference Include="System.Linq" Version="4.1.0-rc2-24027" />
-    <PackageReference Include="System.Linq.Expressions" Version="4.0.11-rc2-24027" />
-    <PackageReference Include="System.Reflection" Version="4.1.0-rc2-24027" />
-    <PackageReference Include="System.Reflection.Extensions" Version="4.0.1-rc2-24027" />
-    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.1.0-rc2-24027" />
-    <PackageReference Include="System.Resources.ResourceManager" Version="4.0.1-rc2-24027" />
-    <PackageReference Include="System.Runtime" Version="4.1.0-rc2-24027" />
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.4.0" />
-    <PackageReference Include="System.Runtime.Extensions" Version="4.1.0-rc2-24027" />
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 </Project>

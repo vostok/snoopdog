@@ -58,17 +58,6 @@ namespace Vostok.SnoopDog
             jsonSerializer.Serialize(Console.Out, reports);
         };
 
-        [Option("dlk", Default = false, HelpText = "Check for deadlocks")]
-        public bool Deadlocks
-        {
-            get => false;
-            set
-            {
-                if (value)
-                    Reporter.RegisterDetector(IssueDetectors.DetectDeadLocks);
-            }
-        }
-
         [Option("ex", Default = false, HelpText = "Check for unhandled exceptions")]
         public bool Exceptions
         {
@@ -88,6 +77,17 @@ namespace Vostok.SnoopDog
             {
                 if (value)
                     Reporter.RegisterMetrics(MetricCollectors.CollectThreadCountMetric);
+            }
+        }
+        
+        [Option("tp", Default = false, HelpText = "Inspect thread pool")]
+        public bool ThreadPool
+        {
+            get => false;
+            set
+            {
+                if (value)
+                    Reporter.RegisterMultiMetric(MetricCollectors.CollectThreadPoolMetrics);
             }
         }
 
@@ -181,8 +181,8 @@ namespace Vostok.SnoopDog
                         }
                     };
                 }
-
-                GetDataTarget = HandleExceptions(() => DataTarget.AttachToProcess(value, 10000, AttachFlag.Passive));
+                
+                GetDataTarget = HandleExceptions(() => DataTarget.AttachToProcess(value, false));
             }
         }
     }
@@ -210,13 +210,8 @@ namespace Vostok.SnoopDog
                         }
                     };
                 }
-
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                    GetDataTarget = HandleExceptions(() => DataTarget.LoadCrashDump(value));
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                    GetDataTarget = HandleExceptions(() => DataTarget.LoadCoreDump(value));
-                else
-                    throw new PlatformNotSupportedException("MacOS is not supported currently.");
+                
+                GetDataTarget = HandleExceptions(() => DataTarget.LoadDump(value));
             }
         }
     }
