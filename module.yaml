@@ -1,4 +1,6 @@
 full-build:
+  deps:
+    - vostok.devtools
 
   build:
     target: Vostok.SnoopDog.sln
