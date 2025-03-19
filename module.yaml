@@ -1,7 +1,22 @@
-full-build:
-  deps:
-    - vostok.devtools
+default:
+    build:
+      tool:
+        name: dotnet
+  
+net60:
+    deps:
+      - vostok.devtools
+    install:
+      - Vostok.SnoopDog\bin\Release\net6.0\Vostok.SnoopDog.dll
+      - Vostok.SnoopDog\bin\Release\net6.0\Vostok.SnoopDog.Core.dll
+    build:
+      parameters: "build -property:TargetFrameworks=net6.0 -property:PackageReferenceSource=Cement"
+      target: Vostok.SnoopDog.sln
+      configuration: Release
 
-  build:
-    target: Vostok.SnoopDog.sln
-    configuration: Release
+full-build:
+    deps:
+      - vostok.devtools
+    build:
+      target: Vostok.SnoopDog.sln
+      configuration: Release
